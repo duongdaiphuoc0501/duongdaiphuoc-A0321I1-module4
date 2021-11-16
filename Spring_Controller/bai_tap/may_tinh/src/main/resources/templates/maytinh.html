@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Caculator</h1>
+<form action="/tinh" method="post">
+    <input type="number" name="a">
+    <input type="number" name="b"><br><br>
+    <input type="submit" name="caculator" value="Addition(+)" onclick="Caculator()">
+    <input type="submit" name="caculator" value="Subtraction(-)" onclick="Caculator()">
+    <input type="submit" name="caculator" value="Multiplication(X)" onclick="Caculator()">
+    <input type="submit" name="caculator" value="Division(/)" onclick="Caculator()"><br><br>
+    Result: <label th:text="${result}"></label>
+</form>
+</body>
+</html>
