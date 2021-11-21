@@ -2,27 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Home</title>
 </head>
 <body>
 <h3>Home</h3>
-<form th:action="@{/inf/save}" th:object="${inf}"
+<form th:action="@{/inf/save}"
       method="POST" novalidate="novalidate">
     <div>
         <label>Language</label>
-        <input type="text" th:field="*{language}"/>
+        <select name="language">
+            <option name="language" value="English">English</option>
+            <option name="language" value="VietNamese">VietNamese</option>
+            <option name="language" value="Germany">Germany</option>
+        </select>
     </div>
     <div>
         <label>Page Size</label>
-        <input type="text" th:field="*{size}"/>
+        <select name="size">
+            <option name="size" value="25">25</option>
+            <option name="size" value="26">26</option>
+            <option name="size" value="27">27</option>
+        </select>
     </div>
     <div>
         <label>Spams fillter</label>
-        <input type="email" th:field="*{fillter}"/>
+        <input type="checkbox" name="fillter"/>
     </div>
     <div>
         <label>Signature</label>
-        <input type="text" th:field="*{signature}"/>
+        <input type="text" name="signature"/>
     </div>
     <input type="submit" value="Update"></input>
 </form>
