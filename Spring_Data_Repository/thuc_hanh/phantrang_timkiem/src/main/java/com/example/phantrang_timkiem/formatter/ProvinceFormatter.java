@@ -2,7 +2,7 @@ package com.example.phantrang_timkiem.formatter;
 
 import com.example.phantrang_timkiem.model.bean.Province;
 
-import com.example.phantrang_timkiem.model.service.ProvinceService;
+import com.example.phantrang_timkiem.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
