@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class BlogController {
     @Autowired
     BlogService blogService;

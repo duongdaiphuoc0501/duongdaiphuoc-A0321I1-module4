@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.1'
+    id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -19,10 +19,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.1'
     runtimeOnly 'mysql:mysql-connector-java:8.0.25'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
-
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
-
-
 }
 
 test {

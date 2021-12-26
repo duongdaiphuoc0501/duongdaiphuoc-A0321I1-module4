@@ -1,9 +1,10 @@
-package com.example.blog.controller;
+package com.example.ajax_blog.controller;
 
-import com.example.blog.model.bean.Blog;
-import com.example.blog.model.bean.Category;
-import com.example.blog.model.service.BlogService;
-import com.example.blog.model.service.CategoryService;
+
+import com.example.ajax_blog.model.bean.Blog;
+import com.example.ajax_blog.model.bean.Category;
+import com.example.ajax_blog.service.BlogService;
+import com.example.ajax_blog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,11 +26,11 @@ public class BlogController {
         return categoryService.findAll();
     }
 
-    @GetMapping("/blog")
+    @GetMapping("/blogs")
     public ModelAndView listBlogs(@RequestParam("s") Optional<String> s, Pageable pageable){
         Page<Blog> blogs;
         if(s.isPresent()){
-            blogs = blogService.findAllByBlog_nameContaining(s.get(), pageable);
+            blogs = blogService.findAllByBlogNameContaining(s.get(), pageable);
         } else {
             blogs = blogService.findAll(pageable);
         }
@@ -37,6 +38,17 @@ public class BlogController {
         modelAndView.addObject("blogs", blogs);
         return modelAndView;
     }
+    @GetMapping("/blogsearch")
+    public ModelAndView listNameBlogs(@RequestParam("search") Optional<String> s, Pageable pageable){
+        Page<Blog> blogs = null;
+        if(s.isPresent()){
+            blogs = blogService.findAllByBlogNameContaining(s.get(), pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/blog/search");
+        modelAndView.addObject("blogs", blogs);
+        return modelAndView;
+    }
+
 
     @GetMapping("/create-blog")
     public ModelAndView showCreateForm(){
@@ -93,7 +105,7 @@ public class BlogController {
 
     @PostMapping("/delete-blog")
     public String deleteBlog(@ModelAttribute("blog") Blog blog){
-        blogService.remove(blog.getBlog_id());
+        blogService.remove(blog.getBlogId());
         return "redirect:blogs";
     }
 }
