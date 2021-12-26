@@ -16,10 +16,7 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-    private Long positionId;
-    private Long educationDegreeId;
-    private Long divisionId;
-    private String username;
+
 
     @ManyToOne
     @JoinColumn(name = "positionId")
@@ -40,7 +37,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String employeeName, Date employeeBirthday, String employeeIdCard, Float employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Long positionId, Long educationDegreeId, Long divisionId, String username, Position position) {
+    public Employee(String employeeName, Date employeeBirthday, String employeeIdCard, Float employeeSalary, String employeePhone, String employeeEmail, String employeeAddress) {
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
         this.employeeIdCard = employeeIdCard;
@@ -48,11 +45,6 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
-        this.positionId = positionId;
-        this.educationDegreeId = educationDegreeId;
-        this.divisionId = divisionId;
-        this.username = username;
-        this.position = position;
     }
 
     public Long getEmployeeId() {
@@ -119,37 +111,6 @@ public class Employee {
         this.employeeAddress = employeeAddress;
     }
 
-    public Long getPositionId() {
-        return positionId;
-    }
-
-    public void setPositionId(Long positionId) {
-        this.positionId = positionId;
-    }
-
-    public Long getEducationDegreeId() {
-        return educationDegreeId;
-    }
-
-    public void setEducationDegreeId(Long educationDegreeId) {
-        this.educationDegreeId = educationDegreeId;
-    }
-
-    public Long getDivisionId() {
-        return divisionId;
-    }
-
-    public void setDivisionId(Long divisionId) {
-        this.divisionId = divisionId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public Position getPosition() {
         return position;

@@ -8,8 +8,6 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userRoleId;
-    private Long roleId;
-    private String username;
 
     @ManyToOne
     @JoinColumn(name = "roleId")
@@ -22,10 +20,6 @@ public class UserRole {
     public UserRole() {
     }
 
-    public UserRole(Long roleId, String username) {
-        this.roleId = roleId;
-        this.username = username;
-    }
 
     public Long getUserRoleId() {
         return userRoleId;
@@ -35,21 +29,6 @@ public class UserRole {
         this.userRoleId = userRoleId;
     }
 
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public Role getRole() {
         return role;
