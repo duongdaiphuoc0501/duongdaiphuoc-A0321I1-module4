@@ -9,11 +9,11 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userRoleId;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Role.class)
     @JoinColumn(name = "roleId")
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "username")
     private User user;
 

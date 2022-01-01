@@ -11,7 +11,7 @@ public class EducationDegree {
     private Long educationDegreeId;
     private String educationDegreeName;
 
-    @OneToMany(mappedBy = "education_degree", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "educationDegree", cascade = CascadeType.ALL)
     private Set<Employee> employees;
 
     public EducationDegree() {

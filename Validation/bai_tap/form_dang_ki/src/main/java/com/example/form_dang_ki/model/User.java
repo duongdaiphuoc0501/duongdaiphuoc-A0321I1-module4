@@ -16,7 +16,7 @@ public class User {
     private String firstname;
     @Size(min = 5, max = 45)
     private String lastname;
-    @Pattern(regexp = "/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/")
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private int numberphone;
     @Min(18)
     private int age;

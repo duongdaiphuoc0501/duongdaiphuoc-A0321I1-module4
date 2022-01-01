@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+    <link rel="stylesheet" href="/assert/bootstrap413/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Tạo mới khách hàng</h1>
+<p>
+    <a href="/customers">Customer list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <div class="form-group">
+        <label>Tên khách hàng</label>
+        <input type="text" class="form-control" th:field="*{customerName}">
+    </div>
+    <div class="form-group">
+        <label>Ngày sinh</label>
+        <input type="text" class="form-control" th:field="*{customerBirthday}">
+        <td th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Giới tính</label>
+        <select class="form-control" th:field="*{customerGender}">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Chứng minh nhân dân</label>
+        <input type="text" class="form-control" th:field="*{customerIdCard}">
+        <td th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Số điện thoại</label>
+        <input type="text" class="form-control" th:field="*{customerPhone}">
+        <td th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" th:field="*{customerEmail}">
+        <td th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Địa chỉ</label>
+        <input type="text" class="form-control" th:field="*{customerAddress}">
+    </div>
+    <div class="form-group">
+        <label>Loại khách</label>
+        <select th:field="*{customerType}">
+            <option th:each="p : ${customertypes}" th:value="${p.customertypeId}" th:text="${p.customertypeName}"></option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Tạo mới</button>
+</form>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.example.furama.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -18,21 +19,32 @@ public class Employee {
     private String employeeAddress;
 
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Position.class)
     @JoinColumn(name = "positionId")
     private Position position;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = EducationDegree.class)
     @JoinColumn(name = "educationDegreeId")
     private EducationDegree educationDegree;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "divisionId")
     private Division division;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "username")
     private User user;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Set<Contract> contracts;
+
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
+    }
 
     public Employee() {
     }

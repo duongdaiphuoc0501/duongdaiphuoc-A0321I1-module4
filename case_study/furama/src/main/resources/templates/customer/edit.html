@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit customer</title>
+    <link rel="stylesheet" href="/assert/bootstrap413/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit customer</h1>
+<p>
+    <a href="/customers">Customer list</a>
+</p>
+<div class="container">
+</div>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-customer}" th:object="${customer}" method="post">
+    <div class="form-group">
+        <input th:type="hidden" name="id" th:field="*{customerId}">
+    </div>
+    <div class="form-group">
+        <label>Tên khách hàng</label>
+        <td><input type="text" th:field="*{customerName}"/></td>
+    </div>
+    <div class="form-group">
+        <label>Ngày sinh</label>
+        <td><input type="text" th:field="*{customerBirthday}"/></td>
+        <td th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label for="customer_gender">Giới tính</label>
+        <select class="form-control" id="customer_gender" name="customer_gender" th:field="*{customerGender}">
+            <option value="true"  th:selected="${customer.customerGender==true?'selected':''}">Nam</option>
+            <option value="false" th:selected="${customer.customerGender==true?'':'selected'}">Nữ</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Chứng minh nhân dân</label>
+        <td><input type="text" th:field="*{customerIdCard}"/></td>
+        <td th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Số điện thoại</label>
+        <td><input type="text" th:field="*{customerPhone}"/></td>
+        <td th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <td><input type="text" th:field="*{customerEmail}"/></td>
+        <td th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}" th:class="error">Name Error</td>
+    </div>
+    <div class="form-group">
+        <label>Địa chỉ</label>
+        <td><input type="text" th:field="*{customerAddress}"/></td>
+    </div>
+    <div class="form-group">
+        <label>Loại khách</label>
+        <select class="form-group" name="customertypes" th:field="*{customerType}">
+            <option th:each="p : ${customertypes}"
+                    th:value="${p.customertypeId}"
+                    th:text="${p.customertypeName}"
+                    ></option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <script src="/assert/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/assert/bootstrap413/js/popper.min.js"></script>
+    <script src="/assert/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assert/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/assert/bootstrap413/js/bootstrap.min.js"></script>
+    <script src="/assert/bootstrap413/js/bootstrap.bundle.js"></script>
+</form>
+</body>
+</html>
